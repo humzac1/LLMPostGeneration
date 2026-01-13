@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thought Leadership Workflow</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🚀 Thought Leadership Workflow</h1>
+            <p class="subtitle">Upload your PDF context and generate engaging social media content</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- Step 1: Upload PDF -->
+            <section class="card" id="upload-section">
+                <div class="card-header">
+                    <span class="step-number">1</span>
+                    <h2>Upload PDF Context</h2>
+                </div>
+                
+                <div class="upload-zone" id="upload-zone">
+                    <div class="upload-icon">📄</div>
+                    <p class="upload-text">Drag and drop your PDF here</p>
+                    <p class="upload-subtext">or click to browse</p>
+                    <input type="file" id="pdf-input" accept=".pdf" hidden>
+                </div>
+
+                <div id="file-info" class="file-info" style="display: none;">
+                    <div class="file-name">
+                        <span id="filename"></span>
+                        <button id="remove-file" class="btn-icon">✕</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 2: Review Context -->
+            <section class="card" id="context-section" style="display: none;">
+                <div class="card-header">
+                    <span class="step-number">2</span>
+                    <h2>Review Extracted Context</h2>
+                </div>
+                
+                <div class="context-preview">
+                    <textarea id="context-text" placeholder="PDF text will appear here..."></textarea>
+                    <div class="char-count">
+                        <span id="char-count">0</span> characters
+                    </div>
+                </div>
+
+                <div class="settings">
+                    <label for="num-posts">Number of posts per platform:</label>
+                    <select id="num-posts">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3" selected>3</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="url-inputs">
+                    <h3>Scraping Sources (Optional)</h3>
+                    <p class="url-hint">Customize which profiles/pages to scrape for style examples</p>
+                    
+                    <div class="input-group">
+                        <label for="linkedin-urls">LinkedIn URLs</label>
+                        <textarea id="linkedin-urls" placeholder="Enter LinkedIn URLs (one per line)&#10;Example:&#10;https://www.linkedin.com/company/openai&#10;https://www.linkedin.com/in/username"></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="x-urls">X (Twitter) URLs</label>
+                        <textarea id="x-urls" placeholder="Enter X URLs (one per line)&#10;Example:&#10;https://twitter.com/OpenAI&#10;https://twitter.com/elonmusk"></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="x-search">X Search Terms</label>
+                        <input type="text" id="x-search" placeholder="e.g., AI automation, machine learning">
+                        <span class="input-hint">Separate multiple terms with commas</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 3: Generate Content -->
+            <section class="card" id="action-section" style="display: none;">
+                <div class="card-header">
+                    <span class="step-number">3</span>
+                    <h2>Generate Content</h2>
+                </div>
+                
+                <button id="start-workflow" class="btn-primary">
+                    <span class="btn-icon">🎯</span>
+                    Start Workflow
+                </button>
+
+                <div id="progress-section" style="display: none;">
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill"></div>
+                    </div>
+                    <p id="progress-text" class="progress-text">Initializing...</p>
+                </div>
+            </section>
+
+            <!-- Step 4: Results -->
+            <section class="card" id="results-section" style="display: none;">
+                <div class="card-header">
+                    <span class="step-number">4</span>
+                    <h2>Generated Content</h2>
+                </div>
+                
+                <div id="results-content" class="results-content">
+                    <!-- Results will be dynamically inserted here -->
+                </div>
+
+                <div class="action-buttons">
+                    <button id="download-pdf" class="btn-primary">
+                        <span class="btn-icon">📥</span>
+                        Download as PDF
+                    </button>
+                    <button id="start-new" class="btn-secondary">
+                        <span class="btn-icon">🔄</span>
+                        Start New Workflow
+                    </button>
+                </div>
+            </section>
+
+            <!-- Error Display -->
+            <div id="error-section" class="error-section" style="display: none;">
+                <div class="error-content">
+                    <span class="error-icon">⚠️</span>
+                    <div>
+                        <h3>Error</h3>
+                        <p id="error-message"></p>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by OpenAI, Apify, and Flask</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
+
